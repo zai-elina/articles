@@ -1,3 +1,3 @@
 export const something = () => {
-  console.log("object");
+  console.log("webpack");
 };
