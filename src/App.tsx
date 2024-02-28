@@ -1,7 +1,8 @@
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import "./index.scss";
-import { Text } from "./components/Text";
 import { Link, Route, Routes } from "react-router-dom";
+import { MainLazy } from "./components/pages/Main/Main.lazy";
+import { TextLazy } from "./components/pages/About/Text.lazy";
 
 const App: FC = () => {
   return (
@@ -9,10 +10,12 @@ const App: FC = () => {
       <Link to={"/"}>main</Link>
       <br />
       <Link to={"/about"}>about</Link>
-      <Routes>
-        <Route path={"/"} element={<div>about</div>} />
-        <Route path={"/about"} element={<Text />} />
-      </Routes>
+      <Suspense fallback={<>Loading...</>}>
+        <Routes>
+          <Route path={"/"} element={<MainLazy />} />
+          <Route path={"/about"} element={<TextLazy />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 };

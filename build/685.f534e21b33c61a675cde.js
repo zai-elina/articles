@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkpet_project=self.webpackChunkpet_project||[]).push([[685],{685:(e,t,c)=>{c.r(t),c.d(t,{default:()=>r});var s=c(848);const r=function(){return(0,s.jsx)("div",{className:"UTh435M9",children:"Gjdhvgkjdf"})}}}]);
