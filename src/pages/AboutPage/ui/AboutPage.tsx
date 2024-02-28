@@ -1,7 +1,7 @@
 import { FC } from "react";
 
-const Text: FC = () => {
+const AboutPage: FC = () => {
   return <div>ABOUT</div>;
 };
 
-export default Text;
+export default AboutPage;
