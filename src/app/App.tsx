@@ -3,8 +3,6 @@ import { Link, Route, Routes } from "react-router-dom";
 import { useTheme } from "./providers/ThemeProvider";
 import { classNames } from "shared/lib/classNames/classNames";
 import "./styles/index.scss";
-import { MainPage } from "pages/MainPage";
-import { AboutPage } from "pages/AboutPage";
 import { AppRouter } from "./providers/routing";
 
 const App: FC = () => {

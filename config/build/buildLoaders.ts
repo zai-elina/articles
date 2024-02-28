@@ -4,6 +4,7 @@ import { BuildOptions } from "./types/config";
 
 export const buildLoaders = (options: BuildOptions): RuleSetRule[] => {
   const { isDev } = options;
+
   const typescriptLoader = {
     test: /\.tsx?$/,
     use: "ts-loader",
