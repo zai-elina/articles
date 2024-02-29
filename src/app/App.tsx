@@ -6,13 +6,12 @@ import { AppRouter } from "./providers/routing";
 import { Navbar } from "widgets/Navbar";
 
 const App: FC = () => {
-  const { theme, toogleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <div className={classNames("app", {}, [theme])}>
       <Navbar />
       <AppRouter />
-      <button onClick={toogleTheme}>Toogle</button>
     </div>
   );
 };
