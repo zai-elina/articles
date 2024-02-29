@@ -14,7 +14,11 @@ const AppRouter: FC<Props> = (props) => {
           <Route
             key={path}
             path={path}
-            element={<Suspense fallback={<>Loading...</>}>{element}</Suspense>}
+            element={
+              <Suspense fallback={<>Loading...</>}>
+                <div className="page-wrapper">{element}</div>
+              </Suspense>
+            }
           />
         ))}
       </Routes>

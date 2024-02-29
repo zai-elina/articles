@@ -4,15 +4,18 @@ import { classNames } from "shared/lib/classNames/classNames";
 import "./styles/index.scss";
 import { AppRouter } from "./providers/routing";
 import { Navbar } from "widgets/Navbar";
+import { Sidebar } from "widgets/Sidebar";
 
 const App: FC = () => {
-  const { theme, toogleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <div className={classNames("app", {}, [theme])}>
       <Navbar />
-      <AppRouter />
-      <button onClick={toogleTheme}>Toogle</button>
+      <div className="content-page">
+        <Sidebar />
+        <AppRouter />
+      </div>
     </div>
   );
 };
