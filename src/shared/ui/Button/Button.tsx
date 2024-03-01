@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, FC, ReactNode } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 import classes from "./Button.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 
