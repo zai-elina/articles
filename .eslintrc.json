@@ -13,7 +13,8 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:i18next/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -23,7 +24,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint", "react-hooks"],
+  "plugins": ["react", "@typescript-eslint", "react-hooks", "i18next"],
   "rules": {
     "react/jsx-indent": [2, 2],
     "react/jsx-indent-props": [2, 2],
@@ -45,7 +46,8 @@
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
     "no-underscore-dangle": "off",
-    "no-console": 1
+    "no-console": 1,
+    "i18next/no-literal-string": ["error", { "markupOnly": true }]
   },
   "globals": {
     "__IS_DEV__": true
