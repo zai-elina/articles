@@ -1,5 +1,5 @@
 import HtmlWebpackPlugin from "html-webpack-plugin";
-import webpack, {
+import {
   DefinePlugin,
   HotModuleReplacementPlugin,
   ProgressPlugin,
