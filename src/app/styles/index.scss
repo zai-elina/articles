@@ -1,7 +1,7 @@
-@import url("reset");
-@import url("variables/global");
-@import url("themes/light");
-@import url("themes/dark");
+@import url("./reset.scss");
+@import url("./variables/global.scss");
+@import url("./themes/light.scss");
+@import url("./themes/dark.scss");
 
 .app {
   min-height: 100vh;
@@ -17,5 +17,5 @@
 
 .page-wrapper {
   flex-grow: 1;
-  padding: 20px;
+  padding:var(--page-padding);
 }
