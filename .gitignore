@@ -2,7 +2,7 @@
 node_modules/
 
 ### VisualStudioCode ###
-.vscode/*      # Maybe .vscode/**/* instead - see comments
+.vscode/*     
 .vscode/settings.json
 .vscode/tasks.json
 .vscode/launch.json

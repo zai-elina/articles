@@ -1,16 +1,16 @@
-.Navbar{
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: var(--navbar-height);
-    padding: 20px;
-    background: var(--inverted-secondary-color);
+.Navbar {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--navbar-height);
+  padding: 20px;
+  background: var(--inverted-secondary-color);
 }
 
-.links{
-    margin-left: auto;
+.links {
+  margin-left: auto;
 }
 
-.mainLink{
-    margin-right: 15px;
+.mainLink {
+  margin-right: 15px;
 }

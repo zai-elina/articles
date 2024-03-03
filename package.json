@@ -10,8 +10,8 @@
     "start": "webpack serve --env port=3001",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint --fix \"**/*.{ts,tsx}\"",
-    "lint:scss": "stylelint \"**/*.scss\"",
-    "lint:scss:fix": "stylelint --fix \"**/*.scss\""
+    "lint:scss": "stylelint \"**/*.scss\" \"**/*.module.scss\"",
+    "lint:scss:fix": "stylelint --fix \"**/*.scss\"  \"**/*.module.scss\""
   },
   "keywords": [],
   "author": "",
@@ -41,8 +41,8 @@
     "sass": "^1.71.1",
     "sass-loader": "^14.1.1",
     "style-loader": "^3.3.4",
-    "stylelint": "^16.2.1",
-    "stylelint-config-standard": "^36.0.0",
+    "stylelint": "^14.5.3",
+    "stylelint-config-standard-scss": "^3.0.0",
     "ts-loader": "^9.5.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3",

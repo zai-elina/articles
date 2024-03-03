@@ -1,15 +1,15 @@
-.Sidebar{
-    position: relative;
-    width: var(--sidebar-width);
-    height: calc(100vh - var(--navbar-height));
-    background: var(--inverted-secondary-color);
-    transition: width 0.3s;
+.Sidebar {
+  position: relative;
+  width: var(--sidebar-width);
+  height: calc(100vh - var(--navbar-height));
+  background: var(--inverted-secondary-color);
+  transition: width 0.3s;
 }
 
-.collapsed{
-    width: var(--sidebar-width-collapsed);
+.collapsed {
+  width: var(--sidebar-width-collapsed);
 }
 
-.switchers_bottom{
-    bottom: 20px;
+.switchers_bottom {
+  bottom: 20px;
 }
