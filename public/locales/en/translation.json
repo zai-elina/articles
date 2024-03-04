@@ -3,5 +3,9 @@
     "Язык":"English",
     "Главная":"Main",
     "О сайте":"About",
-    "Страница не найдена":"Page not found"
+    "Страница не найдена":"Page not found",
+    "Свернуть":"Hidden",
+    "Произошла непредвиденная ошибка":"An unexpected error occurred",
+    "Обновить страницу":"Update page",
+    "ошибка":"error"
 }
