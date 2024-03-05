@@ -18,6 +18,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
 
   return (
     <div
+      data-testid="sidebar"
       className={classNames(
         classes.Sidebar,
         { [classes.collapsed]: collapsed },
