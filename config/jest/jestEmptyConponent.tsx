@@ -1,7 +1,8 @@
-import React from 'react';
-
+import React from "react";
 
 //mock для import
-export const jestEmptyConponent = () => {
+const jestEmptyConponent = () => {
   return <div></div>;
 };
+
+export default jestEmptyConponent;

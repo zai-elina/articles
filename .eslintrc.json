@@ -48,7 +48,10 @@
     "import/no-extraneous-dependencies": "off",
     "no-underscore-dangle": "off",
     "no-console": 1,
-    "i18next/no-literal-string": ["error", { "markupOnly": true }],
+    "i18next/no-literal-string": [
+      "error",
+      { "markupOnly": true, "ignoreAttribute": ["data-testid"] }
+    ],
     "max-len": [1, { "code": 100, "ignoreComments": true }]
   },
   "globals": {
@@ -60,13 +63,14 @@
       "plugins": ["@typescript-eslint"],
       "rules": {
         "no-use-before-define": "off",
-        "@typescript-eslint/no-use-before-define": ["error"]
+        "@typescript-eslint/no-use-before-define": ["warn"]
       }
     },
     {
       "files": ["*.test.*"],
       "rules": {
-        "no-empty-function": "off"
+        "no-empty-function": "off",
+        "i18next/no-literal-string": "off"
       }
     }
   ]
