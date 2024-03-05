@@ -20,10 +20,11 @@ class ErrorBoundary extends React.Component<
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars, no-unused-vars
   static getDerivedStateFromError(error: Error) {
-    // Update state so the next render will show the fallback UI.
+    // Обновить состояние с тем, чтобы следующий рендер показал запасной UI.
     return { hasError: true };
   }
 
+  // вызовется если в одном из дочерних элементах произошла ошибка
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     // eslint-disable-next-line no-console
     console.error(error, errorInfo);
@@ -34,7 +35,7 @@ class ErrorBoundary extends React.Component<
     const { children } = this.props;
 
     if (hasError) {
-      // You can render any custom fallback UI
+      // Можно отрендерить запасной UI произвольного вида
       return (
         <Suspense fallback="">
           <PageError />
