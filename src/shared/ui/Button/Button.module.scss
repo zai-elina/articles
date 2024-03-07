@@ -1,5 +1,5 @@
 .Button {
-  color: var(--primary-color);
+  color: var();
   cursor: pointer;
 }
 
@@ -9,4 +9,11 @@
   background: none;
   border: none;
   outline: none;
+}
+
+.outline {
+  padding: 10px 15px;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  background: none;
 }
