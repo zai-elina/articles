@@ -1,17 +1,20 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
+import { Loader, LoaderProps } from "./Loader";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator";
 import { Theme } from "app/providers/ThemeProvider";
-import { PageLoader, PageLoaderProps } from "./PageLoader";
 
 export default {
-  title: "widgets/PageLoader",
-  component: PageLoader,
+  title: "shared/Loader",
+  component: Loader,
+  argTypes: {
+    className: { control: "text" },
+  },
 } as Meta;
 
-type PageLoaderStory = Story<PageLoaderProps>;
+type LoaderStory = Story<LoaderProps>;
 
-const Template: PageLoaderStory = (args) => <PageLoader {...args} />;
+const Template: LoaderStory = (args) => <Loader {...args} />;
 
 export const Light = Template.bind({});
 Light.args = {};
