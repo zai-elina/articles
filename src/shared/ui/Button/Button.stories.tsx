@@ -21,21 +21,18 @@ const Template: ButtonStory = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  className: "",
   theme: "",
   children: "Text",
 };
 
 export const Clear = Template.bind({});
 Clear.args = {
-  className: "custom-class",
   theme: ThemeButton.CLEAR,
   children: "Text",
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
-  className: "custom-class",
   theme: ThemeButton.OUTLINE,
   children: "Text",
 };
