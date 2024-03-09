@@ -3,7 +3,7 @@ import classes from "./PageLoader.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Loader } from "shared/ui/Loader/Loader";
 
-interface PageLoaderProps {
+export interface PageLoaderProps {
   className?: string;
 }
 
