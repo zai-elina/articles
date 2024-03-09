@@ -14,24 +14,6 @@ export default ({ config }: { config: webpack.Configuration }) => {
   config.resolve?.modules?.push(paths.src);
   config.resolve?.extensions?.push(".ts", ".tsx");
 
-  // if (config.module?.rules !== undefined) {
-  //   config.module.rules = config.module.rules.map(
-  //     (rule: false | "" | 0 | RuleSetRule | "..." | null | undefined) => {
-  //       if (
-  //         rule &&
-  //         rule !== "..." &&
-  //         rule.test instanceof RegExp &&
-  //         rule.test.toString().includes("svg")
-  //       ) {
-  //         return { ...rule, exclude: /\.svg$/i };
-  //       }
-  //     }
-  //   );
-  //   config.module.rules.push({
-  //     test: /\.svg$/i,
-  //     use: ["@svgr/webpack"],
-  //   });
-  // }
   const imageRule = config.module?.rules?.find((rule) => {
     const test = (rule as { test: RegExp }).test;
 
