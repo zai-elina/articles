@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 18.x ]
+        node-version: [ 20.x ]
     steps:
       - uses: actions/checkout@v2
       - name: Staring Node.js ${{ matrix.node-version }}
@@ -29,6 +29,6 @@ jobs:
       - name: build storybook
         run: npm run storybook:build
       - name: update screenshot
-        run: npm run test:ui:ok
+        run: npx loki update --reactUri="file:./storybook-static"
       - name: screenshot testing
         run: npm run test:ui:ci
