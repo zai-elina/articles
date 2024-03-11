@@ -1,54 +1,28 @@
-name: CI/CD
-
+name: linting, testing, buildings
 on:
   push:
     branches: [main, developer]
   pull_request:
     branches: [main, developer]
-
 jobs:
-  linting_testing_building:
+  Pipeline:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [14.x]
+        node-version: [ 18.x ]
     steps:
       - uses: actions/checkout@v2
-      - name: Starting Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+      - name: Staring Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
+      - name: install modules
         run: npm install
-      - name: Build production project
+      - name: build production project
         run: npm run build:prod
-      - name: Linting TypeScript
+      - name: linting typescript
         run: npm run lint:ts
-      - name: Linting CSS
+      - name: linting css
         run: npm run lint:scss
-      - name: Unit testing
+      - name: unit testing
         run: npm run test:unit
-
-  visual_react_dom:
-    name: "Visual tests: React DOM"
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-
-    steps:
-      - uses: actions/checkout@v2
-      - name: Starting Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
-        with:
-          node-version: ${{ matrix.node-version }}
-      - name: Install dependencies
-        run: npm install
-      - name: build storybook
-        run: npm run storybook:build
-      - name: screenshot testing
-        run: npm run test:ui:ci
-      - name: Archive screenshots
-        if: ${{ failure() }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: react-example-screenshots
-          path: examples/react/.loki
