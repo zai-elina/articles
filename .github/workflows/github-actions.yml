@@ -1,28 +1,76 @@
-name: linting, testing, buildings
+name: CI/CD
+
 on:
   push:
     branches: [main, developer]
   pull_request:
     branches: [main, developer]
+
 jobs:
-  Pipeline:
+  linting_testing_building:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 20.x ]
+        node-version: [14.x]
     steps:
       - uses: actions/checkout@v2
-      - name: Staring Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: install modules
-        run: npm install
-      - name: build production project
+      - name: Install dependencies
+        run: npm ci
+      - name: Build production project
         run: npm run build:prod
-      - name: linting typescript
+      - name: Linting TypeScript
         run: npm run lint:ts
-      - name: linting css
+      - name: Linting CSS
         run: npm run lint:scss
-      - name: unit testing
+      - name: Unit testing
         run: npm run test:unit
+
+  integration_cli:
+    name: "Integration tests: CLI"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Run integration tests
+        run: npm run workspace @loki/test-cli test
+      - name: Archive screenshots
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: cra-integration-screenshots
+          path: test/cli/generated/create-react-app/.loki
+
+  visual_react_dom:
+    name: "Visual tests: React DOM"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Starting Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm ci
+      - name: build storybook
+        run: npm run storybook:build
+      - name: screenshot testing
+        run: npm run test:ui:ci
+      - name: Archive screenshots
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: react-example-screenshots
+          path: examples/react/.loki
