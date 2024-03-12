@@ -3,12 +3,14 @@
 @import "themes/light";
 @import "themes/dark";
 
-.app {
-  min-height: 100vh;
-  color: var(--primary-color);
+body {
   font: var(--font-m);
-  background-color: var(--bg-color);
-  transition: all 0.4s ease-in;
+  color: var(--primary-color);
+}
+
+.app {
+  background: var(--bg-color);
+  min-height: 100vh;
 }
 
 .content-page {

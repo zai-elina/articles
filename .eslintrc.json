@@ -15,7 +15,8 @@
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
-    "plugin:i18next/recommended"
+    "plugin:i18next/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -38,7 +39,6 @@
     "import/no-named-as-default-member": "off",
     "import/prefer-default-export": "off",
     "no-unused-vars": "warn",
-    "react-hooks/rules-of-hooks": "error", // Проверяем правила хуков
     "react/require-default-props": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
@@ -52,7 +52,9 @@
       "error",
       { "markupOnly": true, "ignoreAttribute": ["data-testid"] }
     ],
-    "max-len": [1, { "code": 100, "ignoreComments": true }]
+    "max-len": [1, { "code": 100, "ignoreComments": true }],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error"
   },
   "globals": {
     "__IS_DEV__": true
