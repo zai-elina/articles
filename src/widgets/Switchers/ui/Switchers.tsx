@@ -6,12 +6,13 @@ import { ThemeSwitcher } from "shared/ui/ThemeSwitcher/ThemeSwitcher";
 
 export interface SwitchersProps {
   className?: string;
+  collapsed?: boolean;
 }
-export const Switchers: FC<SwitchersProps> = ({ className }) => {
+export const Switchers: FC<SwitchersProps> = ({ className, collapsed }) => {
   return (
     <div className={classNames(classes.switchers, {}, [className])}>
       <ThemeSwitcher />
-      <LangSwitcher />
+      <LangSwitcher short={collapsed} />
     </div>
   );
 };
