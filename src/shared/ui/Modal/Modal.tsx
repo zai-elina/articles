@@ -2,6 +2,7 @@ import { FC, ReactNode, useEffect, useRef, useState, useCallback } from "react";
 import classes from "./Modal.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Portal } from "shared/ui/Portal/Portal";
+import { useTheme } from "app/providers/ThemeProvider";
 
 export interface ModalProps {
   className?: string;
@@ -17,6 +18,7 @@ interface KeyboardEvent {
 const ANIMATION_DELAY = 300;
 
 export const Modal: FC<ModalProps> = (props) => {
+  const { theme } = useTheme();
   const { className, children, isOpen, onClose } = props;
   const [isClosing, setIsClosing] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
@@ -62,7 +64,7 @@ export const Modal: FC<ModalProps> = (props) => {
 
   return (
     <Portal>
-      <div className={classNames(classes.Modal, mods, [className])}>
+      <div className={classNames(classes.Modal, mods, [className, theme])}>
         <div className={classes.overlay} onClick={closeHandler}>
           <div className={classes.content} onClick={onClickContent}>
             {children}
