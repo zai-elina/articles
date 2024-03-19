@@ -1,10 +1,10 @@
 .InputWrapper {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  gap: 16px;
 }
 
 .Input {
+  flex-grow: 1;
   border-radius: 10px;
   border: 1px solid var(--inverted-bg-color);
   padding: 6px 15px;
@@ -16,4 +16,29 @@
   box-shadow:
     rgb(17 17 26 / 5%) 0 1px 0,
     rgb(17 17 26 / 10%) 0 0 8px;
+  animation: 3s infinite rainbow;
+}
+
+@keyframes rainbow {
+  0% {
+    caret-color: #f498ad;
+  }
+  20% {
+    caret-color: #ff8630;
+  }
+  40% {
+    caret-color: #ffd829;
+  }
+  60% {
+    caret-color: #41e847;
+  }
+  80% {
+    caret-color: #2e9aff;
+  }
+  100% {
+    caret-color: #f498ad;
+  }
+}
+
+input:focus {
 }

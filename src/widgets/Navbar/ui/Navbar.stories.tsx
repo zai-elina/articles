@@ -2,14 +2,14 @@ import React from "react";
 import { Meta, Story } from "@storybook/react";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator";
 import { Theme } from "app/providers/ThemeProvider";
-import { Navbar, NavbarProps } from "./Navbar";
+import { Navbar } from "./Navbar";
 
 export default {
   title: "widgets/Navbar",
   component: Navbar,
-} as Meta;
+} as Meta<typeof Navbar>;
 
-type NavbarStory = Story<NavbarProps>;
+type NavbarStory = Story<typeof Navbar>;
 
 const Template: NavbarStory = (args) => <Navbar {...args} />;
 

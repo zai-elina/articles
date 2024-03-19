@@ -10,10 +10,20 @@ interface LoginFormProps {
 }
 export const LoginForm: FC<LoginFormProps> = ({ className }) => {
   const { t } = useTranslation();
+
   return (
     <div className={classNames(classes.LoginForm, {}, [className])}>
-      <Input className={classes.input} type="text"></Input>
-      <Input className={classes.input} type="text"></Input>
+      <Input
+        className={classes.input}
+        type="text"
+        placeholder={t("Введите логин")}
+        autofocus
+      ></Input>
+      <Input
+        className={classes.input}
+        type="text"
+        placeholder={t("Введите пароль")}
+      ></Input>
       <Button className={classes.loginButton}>{t("Войти")}</Button>
     </div>
   );
