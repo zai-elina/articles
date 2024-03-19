@@ -1,3 +1,19 @@
-.Input{
-    
+.InputWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.Input {
+  border-radius: 10px;
+  border: 1px solid var(--inverted-bg-color);
+  padding: 6px 15px;
+}
+
+.Input:focus {
+  border-color: var(--secondary-color);
+  outline: 0;
+  box-shadow:
+    rgb(17 17 26 / 5%) 0 1px 0,
+    rgb(17 17 26 / 10%) 0 0 8px;
 }
