@@ -4,7 +4,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Portal } from "shared/ui/Portal/Portal";
 import { useTheme } from "app/providers/ThemeProvider";
 
-export interface ModalProps {
+interface ModalProps {
   className?: string;
   children?: ReactNode;
   isOpen?: boolean;

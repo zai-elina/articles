@@ -2,14 +2,14 @@ import React from "react";
 import { Meta, Story } from "@storybook/react";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator";
 import { Theme } from "app/providers/ThemeProvider";
-import { PageError, PageErrorProps } from "./PageError";
+import { PageError } from "./PageError";
 
 export default {
   title: "widgets/PageError",
   component: PageError,
-} as Meta;
+} as Meta<typeof PageError>;
 
-type PageErrorStory = Story<PageErrorProps>;
+type PageErrorStory = Story<typeof PageError>;
 
 const Template: PageErrorStory = (args) => <PageError {...args} />;
 

@@ -9,7 +9,7 @@ import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import AboutIcon from "shared/assets/icons/about.svg";
 import MainIcon from "shared/assets/icons/main.svg";
 
-export interface SidebarProps {
+interface SidebarProps {
   className?: string;
 }
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
