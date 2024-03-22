@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "./Loader.scss";
 
-export interface LoaderProps {
+interface LoaderProps {
   className?: string;
 }
 

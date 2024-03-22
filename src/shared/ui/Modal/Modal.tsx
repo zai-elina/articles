@@ -4,11 +4,12 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { Portal } from "shared/ui/Portal/Portal";
 import { useTheme } from "app/providers/ThemeProvider";
 
-export interface ModalProps {
+interface ModalProps {
   className?: string;
   children?: ReactNode;
   isOpen?: boolean;
   onClose?: () => void;
+  lazy?: boolean;
 }
 
 interface KeyboardEvent {
@@ -18,9 +19,10 @@ interface KeyboardEvent {
 const ANIMATION_DELAY = 300;
 
 export const Modal: FC<ModalProps> = (props) => {
+  const { className, children, isOpen, onClose, lazy } = props;
   const { theme } = useTheme();
-  const { className, children, isOpen, onClose } = props;
   const [isClosing, setIsClosing] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
   const closeHandler = useCallback(() => {
@@ -57,10 +59,20 @@ export const Modal: FC<ModalProps> = (props) => {
     };
   }, [isOpen, onKeyDown]);
 
+  useEffect(() => {
+    if (isOpen) {
+      setIsMounted(true);
+    }
+  }, [isOpen]);
+
   const mods: Record<string, boolean> = {
     [classes.opened]: isOpen,
     [classes.isClosing]: isClosing,
   };
+
+  if (lazy && !isMounted) {
+    return null;
+  }
 
   return (
     <Portal>
