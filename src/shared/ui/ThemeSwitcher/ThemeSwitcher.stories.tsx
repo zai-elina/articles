@@ -2,14 +2,14 @@ import React from "react";
 import { Meta, Story } from "@storybook/react";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator";
 import { Theme } from "app/providers/ThemeProvider";
-import { ThemeSwitcher, ThemeSwitcherProps } from "./ThemeSwitcher";
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 export default {
   title: "widgets/ThemeSwitcher",
   component: ThemeSwitcher,
-} as Meta;
+} as Meta<typeof ThemeSwitcher>;
 
-type ThemeSwitcherStory = Story<ThemeSwitcherProps>;
+type ThemeSwitcherStory = Story<typeof ThemeSwitcher>;
 
 const Template: ThemeSwitcherStory = (args) => <ThemeSwitcher {...args} />;
 

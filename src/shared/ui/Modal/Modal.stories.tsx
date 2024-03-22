@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
-import { Modal, ModalProps } from "./Modal";
+import { Modal } from "./Modal";
 
 export default {
   title: "shared/Modal",
@@ -8,9 +8,9 @@ export default {
   argTypes: {
     background: { control: "color" },
   },
-} as Meta;
+} as Meta<typeof Modal>;
 
-type ModalStory = Story<ModalProps>;
+type ModalStory = Story<typeof Modal>;
 
 const Template: ModalStory = (args) => <Modal {...args} />;
 

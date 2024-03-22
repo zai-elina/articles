@@ -4,7 +4,7 @@ import { classNames } from "shared/lib/classNames/classNames";
 import { LangSwitcher } from "shared/ui/LangSwitcher/LangSwitcher";
 import { ThemeSwitcher } from "shared/ui/ThemeSwitcher/ThemeSwitcher";
 
-export interface SwitchersProps {
+interface SwitchersProps {
   className?: string;
   collapsed?: boolean;
 }

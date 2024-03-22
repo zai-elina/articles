@@ -2,14 +2,14 @@ import React from "react";
 import { Meta, Story } from "@storybook/react";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator";
 import { Theme } from "app/providers/ThemeProvider";
-import { Sidebar, SidebarProps } from "./Sidebar";
+import { Sidebar } from "./Sidebar";
 
 export default {
   title: "widgets/Sidebar",
   component: Sidebar,
-} as Meta;
+} as Meta<typeof Sidebar>;
 
-type SidebarStory = Story<SidebarProps>;
+type SidebarStory = Story<typeof Sidebar>;
 
 const Template: SidebarStory = (args) => <Sidebar {...args} />;
 

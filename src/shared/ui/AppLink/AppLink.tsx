@@ -8,11 +8,12 @@ export enum AppLinkTheme {
   SECONDARY = "secondary",
 }
 
-export interface AppLinkProps extends LinkProps {
+interface AppLinkProps extends LinkProps {
   className?: string;
   children: ReactNode;
   theme?: AppLinkTheme;
 }
+
 export const AppLink: FC<AppLinkProps> = (props) => {
   const {
     className,

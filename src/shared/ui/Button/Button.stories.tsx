@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
-import { Button, ButtonProps, SizeButton, ThemeButton } from "./Button";
+import { Button, SizeButton, ThemeButton } from "./Button";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator";
 import { Theme } from "app/providers/ThemeProvider";
 
@@ -13,9 +13,9 @@ export default {
       control: { type: "select", options: ["clear"] },
     },
   },
-} as Meta;
+} as Meta<typeof Button>;
 
-type ButtonStory = Story<ButtonProps>;
+type ButtonStory = Story<typeof Button>;
 
 const Template: ButtonStory = (args) => <Button {...args} />;
 
@@ -100,4 +100,11 @@ SquareSizeXL.args = {
   square: true,
   children: ">",
   size: SizeButton.XL,
+};
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  theme: ThemeButton.BACKGROUND,
+  children: "Text",
+  disabled: true,
 };

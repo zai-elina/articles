@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
-import { Loader, LoaderProps } from "./Loader";
+import { Loader } from "./Loader";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator";
 import { Theme } from "app/providers/ThemeProvider";
 
@@ -10,9 +10,9 @@ export default {
   argTypes: {
     className: { control: "text" },
   },
-} as Meta;
+} as Meta<typeof Loader>;
 
-type LoaderStory = Story<LoaderProps>;
+type LoaderStory = Story<typeof Loader>;
 
 const Template: LoaderStory = (args) => <Loader {...args} />;
 
