@@ -85,6 +85,7 @@
     "@reduxjs/toolkit": "^2.2.1",
     "@types/react": "^18.2.60",
     "@types/react-dom": "^18.2.19",
+    "axios": "^1.6.8",
     "i18next": "^23.10.0",
     "i18next-browser-languagedetector": "^7.2.0",
     "i18next-http-backend": "^2.5.0",

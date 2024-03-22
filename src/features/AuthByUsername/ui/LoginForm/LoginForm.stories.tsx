@@ -1,24 +1,40 @@
 import React from "react";
-import { Meta, Story } from "@storybook/react";
+import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { LoginForm } from "./LoginForm";
-import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator";
-import { Theme } from "app/providers/ThemeProvider";
+import { StoreDecorator } from "shared/config/storybook/StoreDecorator";
 
 export default {
   title: "features/LoginForm",
   component: LoginForm,
   argTypes: {
-    background: { control: "color" },
+    backgroundColor: { control: "color" },
   },
-} as Meta<typeof LoginForm>;
+} as ComponentMeta<typeof LoginForm>;
 
-type LoginFormStory = Story<typeof LoginForm>;
-
-const Template: LoginFormStory = (args) => <LoginForm {...args} />;
+const Template: ComponentStory<typeof LoginForm> = (args) => (
+  <LoginForm {...args} />
+);
 
 export const Primary = Template.bind({});
 Primary.args = {};
+Primary.decorators = [
+  StoreDecorator({
+    loginForm: { username: "123", password: "asd" },
+  }),
+];
 
-export const Dark = Template.bind({});
-Primary.args = {};
-Dark.decorators = [ThemeDecorator(Theme.DARK)];
+export const withError = Template.bind({});
+withError.args = {};
+withError.decorators = [
+  StoreDecorator({
+    loginForm: { username: "123", password: "asd", error: "ERROR" },
+  }),
+];
+
+export const Loading = Template.bind({});
+Loading.args = {};
+Loading.decorators = [
+  StoreDecorator({
+    loginForm: { isLoading: true },
+  }),
+];

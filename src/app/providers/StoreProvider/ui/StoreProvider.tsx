@@ -5,7 +5,7 @@ import { StateSchema } from "../config/StateSchema";
 
 interface StoreProviderProps {
   children?: ReactNode;
-  initialState?: Partial<StateSchema>;
+  initialState?: DeepPartial<StateSchema>;
 }
 export const StoreProvider: FC<StoreProviderProps> = (props) => {
   const { children, initialState } = props;

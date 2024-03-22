@@ -7,7 +7,7 @@ import { StateSchema, StoreProvider } from "app/providers/StoreProvider";
 
 export interface ComponentRenderOptions {
   route?: string;
-  initialState?: Partial<StateSchema>;
+  initialState?: DeepPartial<StateSchema>;
 }
 
 export const ComponentRender = (
