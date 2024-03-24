@@ -1,7 +1,7 @@
 import { ReducersMapObject, configureStore } from "@reduxjs/toolkit";
 import { StateSchema } from "./StateSchema";
 import { counterReducer } from "entities/Counter";
-import { userReducer } from "entities/User/modal/slice/userSlice";
+import { userReducer } from "entities/User/model/slice/userSlice";
 import { createReducerManager } from "./reducerManager";
 
 // для переиспользования перенесла конфигурацию в функцию

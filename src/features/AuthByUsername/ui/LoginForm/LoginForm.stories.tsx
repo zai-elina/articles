@@ -1,7 +1,7 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
 import { StoreDecorator } from "shared/config/storybook/StoreDecorator";
-import LoginForm, { LoginFormProps } from "./LoginForm";
+import LoginForm from "./LoginForm";
 
 export default {
   title: "features/LoginForm",
@@ -9,9 +9,9 @@ export default {
   argTypes: {
     backgroundColor: { control: "color" },
   },
-} as Meta<LoginFormProps>;
+} as Meta<typeof LoginForm>;
 
-const Template: Story<LoginFormProps> = (args) => (
+const Template: Story<typeof LoginForm> = (args) => (
   <LoginForm {...args} />
 );
 
@@ -20,7 +20,6 @@ Primary.args = {};
 Primary.decorators = [
   StoreDecorator({
     loginForm: { username: "123", password: "asd" },
-    
   }),
 ];
 

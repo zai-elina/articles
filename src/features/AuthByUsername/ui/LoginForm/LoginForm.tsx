@@ -5,14 +5,14 @@ import { useTranslation } from "react-i18next";
 import { Button, ThemeButton } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
 import { useSelector } from "react-redux";
-import { loginActions, loginReducer } from "../../modal/slice/loginSlice";
-import { loginByUsername } from "../../modal/service/loginByUsername";
+import { loginActions, loginReducer } from "../../model/slice/loginSlice";
+import { loginByUsername } from "../../model/services/loginByUsername/loginByUsername";
 import { Text, ThemeText } from "shared/ui/Text/Text";
 import { useAppDispatch } from "app/providers/StoreProvider";
-import { getLoginUsername } from "../../modal/selectors/getLoginUsername/getLoginUsername";
-import { getLoginPassword } from "../../modal/selectors/getLoginPassword/getLoginPassword";
-import { getLoginIsLoading } from "../../modal/selectors/getLoginIsLoading/getLoginIsLoading";
-import { getLoginError } from "../../modal/selectors/getLoginError/getLoginError";
+import { getLoginUsername } from "../../model/selectors/getLoginUsername/getLoginUsername";
+import { getLoginPassword } from "../../model/selectors/getLoginPassword/getLoginPassword";
+import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
+import { getLoginError } from "../../model/selectors/getLoginError/getLoginError";
 import {
   DynamicModuleLoader,
   ReducersList,
@@ -60,7 +60,7 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
     },
     [onClickLogin]
   );
-  
+
   return (
     <DynamicModuleLoader reducers={initialReducers} removeAfterUnmount>
       <div className={classNames(classes.LoginForm, {}, [className])}>
@@ -77,7 +77,7 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
           placeholder={t("Введите логин")}
           autofocus
           onChange={onChangeUserName}
-          value={username ?? ""}
+          value={username}
           onKeyPress={onKeyPress}
         ></Input>
         <Input
@@ -85,7 +85,7 @@ const LoginForm = memo(({ className }: LoginFormProps) => {
           type="text"
           placeholder={t("Введите пароль")}
           onChange={onChangePassword}
-          value={password ?? ""}
+          value={password}
           onKeyPress={onKeyPress}
         ></Input>
         <Button
