@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import classes from "./Navbar.module.scss";
 import { Button, ThemeButton } from "shared/ui/Button/Button";
@@ -12,7 +12,7 @@ interface NavbarProps {
   className?: string;
 }
 
-export const Navbar: FC<NavbarProps> = ({ className }) => {
+export const Navbar = memo(({ className }: NavbarProps) => {
   const { t } = useTranslation();
   const authData = useSelector(getUserAuthData);
   const dispatch = useAppDispatch();
@@ -55,4 +55,6 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
       )}
     </div>
   );
-};
+});
+
+Navbar.displayName = "Navbar";

@@ -15,7 +15,7 @@ import { getLoginError } from "../../model/selectors/getLoginError/getLoginError
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/components/DynamicModuleLoader";
+} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 
 export interface LoginFormProps {
@@ -62,7 +62,8 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         onClickLogin();
       }
     },
-    [onClickLogin]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   return (
