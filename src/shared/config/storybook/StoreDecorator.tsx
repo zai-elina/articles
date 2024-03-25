@@ -1,10 +1,25 @@
+/* eslint-disable react/display-name */
 import { StateSchema, StoreProvider } from "app/providers/StoreProvider";
 import { Story } from "@storybook/react";
+import { ReducersMapObject } from "@reduxjs/toolkit";
+import { loginReducer } from "features/AuthByUsername/model/slice/loginSlice";
+
+const defaultAsyncReducers: DeepPartial<ReducersMapObject<StateSchema>> = {
+  loginForm: loginReducer,
+};
 
 export const StoreDecorator =
-  // eslint-disable-next-line react/display-name
-  (state: DeepPartial<StateSchema>) => (Story: Story) => (
-    <StoreProvider initialState={state}>
-      <Story />
-    </StoreProvider>
-  );
+  (
+    state: DeepPartial<StateSchema>,
+    asyncReducers?: DeepPartial<ReducersMapObject<StateSchema>>
+  ) =>
+    (Story: Story) => {
+      return (
+        <StoreProvider
+          initialState={state}
+          asyncReducers={{ ...defaultAsyncReducers, ...asyncReducers}}
+        >
+          <Story />
+        </StoreProvider>
+      );
+    };

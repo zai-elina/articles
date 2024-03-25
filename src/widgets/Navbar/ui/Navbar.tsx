@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { LoginModal } from "features/AuthByUsername";
 import { getUserAuthData, userActions } from "entities/User";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "app/providers/StoreProvider";
+import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 
 interface NavbarProps {
   className?: string;
@@ -50,7 +50,9 @@ export const Navbar: FC<NavbarProps> = ({ className }) => {
         </Button>
       </div>
 
-      <LoginModal isOpen={isAuthModalOpen} onClose={onCloseModalLogin} />
+      {isAuthModalOpen && (
+        <LoginModal isOpen={isAuthModalOpen} onClose={onCloseModalLogin} />
+      )}
     </div>
   );
 };
