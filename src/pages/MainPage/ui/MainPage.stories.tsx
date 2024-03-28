@@ -11,7 +11,7 @@ export default {
 
 type MainPageStory = Story;
 
-const Template: MainPageStory = (args) => <MainPage {...args} />;
+const Template: MainPageStory = () => <MainPage />;
 
 export const Light = Template.bind({});
 Light.args = {};

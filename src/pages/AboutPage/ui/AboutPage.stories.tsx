@@ -11,7 +11,7 @@ export default {
 
 type AboutPageStory = Story;
 
-const Template: AboutPageStory = (args) => <AboutPage {...args} />;
+const Template: AboutPageStory = () => <AboutPage />;
 
 export const Light = Template.bind({});
 Light.args = {};

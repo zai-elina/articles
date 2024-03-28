@@ -6,10 +6,9 @@ import {
 } from "@reduxjs/toolkit";
 import { ReducerManager, StateSchema, StateSchemaKey } from "./StateSchema";
 
-
 export function createReducerManager(
   initialReducers: ReducersMapObject<StateSchema>
-):ReducerManager {
+): ReducerManager {
   const reducers = { ...initialReducers };
 
   let combinedReducer = combineReducers(reducers);
@@ -21,12 +20,13 @@ export function createReducerManager(
     reduce: (state: StateSchema, action: AnyAction) => {
       if (keysToRemove.length > 0) {
         state = { ...state };
-        keysToRemove.forEach((key: StateSchemaKey)=>{
+        keysToRemove.forEach((key: StateSchemaKey) => {
           delete state[key];
         });
         keysToRemove = [];
       }
 
+      //@ts-expect-error @typescript-eslint/ban-ts-comment
       return combinedReducer(state, action);
     },
 

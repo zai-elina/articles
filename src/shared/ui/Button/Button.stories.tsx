@@ -21,20 +21,17 @@ const Template: ButtonStory = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  theme: "",
   children: "Text",
 };
 
 export const DefaultSizeL = Template.bind({});
 DefaultSizeL.args = {
-  theme: "",
   children: "Text",
   size: SizeButton.L,
 };
 
 export const DefaultSizeXL = Template.bind({});
 DefaultSizeXL.args = {
-  theme: "",
   children: "Text",
   size: SizeButton.XL,
 };
