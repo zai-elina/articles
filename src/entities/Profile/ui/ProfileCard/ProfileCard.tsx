@@ -105,7 +105,7 @@ export const ProfileCard = (props: ProfileCardProps) => {
         />
         <Input
           value={data?.age}
-          pattern="^[0-9]{1,3}"
+          type="number"
           placeholder={t("Ваш возраст")}
           className={classes.input}
           onChange={onChangeAge}

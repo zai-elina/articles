@@ -9,23 +9,41 @@ import { ProfileCard } from "entities/Profile";
 import { profileActions, profileReducer } from "../model/slice/profileSlice";
 import { useAppSelector } from "shared/lib/hooks/useAppSelector/useAppSelector";
 import { getProfileIsLoading } from "../model/selectors/getProfileIsLoading/getProfileIsLoading";
-import { getProfileError } from "../model/selectors/getProfileError/getProfileError";
 import { EditableProfileCardHeader } from "./EditableProfileCardHeader/EditableProfileCardHeader";
 import { getProfileReadonly } from "../model/selectors/getProfileReadonly/getProfileReadonly";
 import { getProfileForm } from "../model/selectors/getProfileForm/getProfileForm";
+import { getProfileError } from "../model/selectors/getProfileError/getProfileError";
 import { Currency } from "entities/Currency";
 import { Country } from "entities/Country";
+import { 
+  getProfileValidateErrors 
+} from "../model/selectors/getProfileValidateErrors/getProfileValidateErrors";
+import { TextTheme, Text } from "shared/ui/Text/Text";
+import { ValidateProfileError } from "../model/types/profile";
+import { useTranslation } from "react-i18next";
 
 const reducers: ReducersList = {
   profile: profileReducer,
 };
 
 export const EditableProfileCard: FC = () => {
+  const { t } = useTranslation("profile");
   const dispatch = useAppDispatch();
   const formData = useAppSelector(getProfileForm);
   const isLoading = useAppSelector(getProfileIsLoading);
   const error = useAppSelector(getProfileError);
   const readonly = useAppSelector(getProfileReadonly);
+  const validateErrors = useAppSelector(getProfileValidateErrors);
+
+  const validateErrorsTranslation = {
+    [ValidateProfileError.INCORRECT_USER_DATA]: t(
+      "Имя и фамилия обязательные поля"
+    ),
+    [ValidateProfileError.INCORRECT_AGE]: t("Неккоректный возраст"),
+    [ValidateProfileError.INCORRECT_USERNAME]: t("Username обязательное поле"),
+    [ValidateProfileError.NOT_DATA]: t("Нет данных"),
+    [ValidateProfileError.SERVER_ERROR]: t("Ошибка сервера"),
+  };
 
   useEffect(() => {
     dispatch(fetchProfileData());
@@ -81,7 +99,7 @@ export const EditableProfileCard: FC = () => {
   );
 
   const onChangeCountry = useCallback(
-    (country: Country) => { 
+    (country: Country) => {
       dispatch(profileActions.updateProfile({ country }));
     },
     [dispatch]
@@ -90,6 +108,14 @@ export const EditableProfileCard: FC = () => {
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <EditableProfileCardHeader />
+      {validateErrors?.length &&
+        validateErrors.map((err) => (
+          <Text
+            text={validateErrorsTranslation[err]}
+            theme={TextTheme.ERROR}
+            key={err}
+          />
+        ))}
       <ProfileCard
         data={formData}
         isLoading={isLoading}
