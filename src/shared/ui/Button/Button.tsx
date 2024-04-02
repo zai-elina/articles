@@ -2,14 +2,15 @@ import { ButtonHTMLAttributes, memo } from "react";
 import classes from "./Button.module.scss";
 import { Mods, classNames } from "shared/lib/classNames/classNames";
 
-export enum ThemeButton {
+export enum ButtonTheme {
   CLEAR = "clear",
   OUTLINE = "outline",
+  OUTLINE_RED = "outline_red",
   BACKGROUND = "background",
   BACKGROUND_INVERTED = "backgroundInverted",
 }
 
-export enum SizeButton {
+export enum ButtonSize {
   M = "size_m",
   L = "size_l",
   XL = "size_xl",
@@ -18,9 +19,9 @@ export enum SizeButton {
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
-  theme?: ThemeButton;
+  theme?: ButtonTheme;
   square?: boolean;
-  size?: SizeButton;
+  size?: ButtonSize;
   disabled?: boolean;
 }
 
@@ -28,9 +29,9 @@ export const Button = memo((props: ButtonProps) => {
   const {
     className,
     children,
-    theme = ThemeButton.OUTLINE,
+    theme = ButtonTheme.OUTLINE,
     square,
-    size = SizeButton.M,
+    size = ButtonSize.M,
     disabled,
     ...otherProps
   } = props;

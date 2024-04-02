@@ -1,7 +1,7 @@
 import { memo, useCallback, useState } from "react";
 import { classNames } from "shared/lib/classNames/classNames";
 import classes from "./Navbar.module.scss";
-import { Button, ThemeButton } from "shared/ui/Button/Button";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { useTranslation } from "react-i18next";
 import { LoginModal } from "features/AuthByUsername";
 import { getUserAuthData, userActions } from "entities/User";
@@ -34,7 +34,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     return (
       <div className={classNames(classes.Navbar, {}, [className])}>
         <div className={classes.links}>
-          <Button theme={ThemeButton.BACKGROUND} onClick={onLogout}>
+          <Button theme={ButtonTheme.BACKGROUND} onClick={onLogout}>
             {t("Выйти")}
           </Button>
         </div>
@@ -45,7 +45,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   return (
     <div className={classNames(classes.Navbar, {}, [className])}>
       <div className={classes.links}>
-        <Button theme={ThemeButton.BACKGROUND} onClick={onOpenModalLogin}>
+        <Button theme={ButtonTheme.BACKGROUND} onClick={onOpenModalLogin}>
           {t("Войти")}
         </Button>
       </div>

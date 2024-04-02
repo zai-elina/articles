@@ -7,6 +7,7 @@ export interface SidebatItemType {
   path: string;
   text: string;
   Icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+  authOnly?: boolean;
 }
 
 export const SidebarItemsList: SidebatItemType[] = [
@@ -24,5 +25,6 @@ export const SidebarItemsList: SidebatItemType[] = [
     path: RoutePath.profile,
     Icon: ProfileIcon,
     text: "Профиль",
+    authOnly: true,
   },
 ];

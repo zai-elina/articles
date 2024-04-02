@@ -5,7 +5,7 @@
 
 .Input {
   flex-grow: 1;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   border: 1px solid var(--inverted-bg-color);
   padding: 6px 15px;
 }
@@ -17,6 +17,11 @@
     rgb(17 17 26 / 5%) 0 1px 0,
     rgb(17 17 26 / 10%) 0 0 8px;
   animation: 3s infinite rainbow;
+}
+
+.readonly {
+  opacity: 0.6;
+  pointer-events: none;
 }
 
 @keyframes rainbow {

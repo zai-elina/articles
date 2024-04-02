@@ -1,6 +1,6 @@
 import { memo } from "react";
 import classes from "./CollapsedButton.module.scss";
-import { Button, SizeButton, ThemeButton } from "../Button/Button";
+import { Button, ButtonSize, ButtonTheme } from "../Button/Button";
 
 interface CollapsedButtonProps {
   collapsed: boolean;
@@ -14,9 +14,9 @@ export const CollapsedButton = memo(
         onClick={onToggle}
         data-testid="sidebar-toggle"
         className={classes.collapseBtn}
-        theme={ThemeButton.BACKGROUND_INVERTED}
+        theme={ButtonTheme.BACKGROUND_INVERTED}
         square
-        size={SizeButton.WIDTH_100}
+        size={ButtonSize.WIDTH_100}
       >
         {collapsed ? ">" : "<"}
       </Button>
