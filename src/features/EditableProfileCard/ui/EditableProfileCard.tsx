@@ -15,9 +15,7 @@ import { getProfileForm } from "../model/selectors/getProfileForm/getProfileForm
 import { getProfileError } from "../model/selectors/getProfileError/getProfileError";
 import { Currency } from "entities/Currency";
 import { Country } from "entities/Country";
-import { 
-  getProfileValidateErrors 
-} from "../model/selectors/getProfileValidateErrors/getProfileValidateErrors";
+import { getProfileValidateErrors } from "../model/selectors/getProfileValidateErrors/getProfileValidateErrors";
 import { TextTheme, Text } from "shared/ui/Text/Text";
 import { ValidateProfileError } from "../model/types/profile";
 import { useTranslation } from "react-i18next";
@@ -46,7 +44,9 @@ export const EditableProfileCard: FC = () => {
   };
 
   useEffect(() => {
-    dispatch(fetchProfileData());
+    if (__PROJECT__ !== "storybook") {
+      dispatch(fetchProfileData());
+    }
   }, [dispatch]);
 
   const onChangeFirstname = useCallback(
