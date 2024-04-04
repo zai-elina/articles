@@ -10,13 +10,15 @@ export function useTheme(): UseThemeResult {
   const { theme, setTheme } = useContext(ThemeContext);
 
   useLayoutEffect(() => {
-    document.body.className = theme;
-    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
+    if (theme) {
+      document.body.className = theme;
+      localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme);
+    }
   }, [theme]);
 
   const toogleTheme = () => {
     const newTheme = theme === Theme.DARK ? Theme.LIGHT : Theme.DARK;
-    setTheme(newTheme);
+    setTheme?.(newTheme);
   };
 
   return {

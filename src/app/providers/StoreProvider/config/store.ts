@@ -1,8 +1,8 @@
-import { ReducersMapObject, configureStore } from "@reduxjs/toolkit";
-import { StateSchema } from "./StateSchema";
-import { counterReducer } from "entities/Counter";
+import { Reducer, ReducersMapObject, configureStore } from "@reduxjs/toolkit";
+import { CombinedState, StateSchema, ThunkExtraArg } from "./StateSchema";
 import { userReducer } from "entities/User/model/slice/userSlice";
 import { createReducerManager } from "./reducerManager";
+import { $api } from "shared/api/api";
 
 // для переиспользования перенесла конфигурацию в функцию
 export function createReduxStore(
@@ -11,16 +11,25 @@ export function createReduxStore(
 ) {
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
-    counter: counterReducer,
     user: userReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);
 
-  const store = configureStore<StateSchema>({
-    reducer: reducerManager.reduce,
+  const extraArg: ThunkExtraArg = {
+    api: $api,
+  };
+
+  const store = configureStore({
+    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: __IS_DEV__,
     preloadedState: initialState,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: extraArg,
+        },
+      }),
   });
 
   //@ts-expect-error @typescript-eslint/ban-ts-comment

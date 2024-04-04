@@ -2,12 +2,12 @@ import { memo, useCallback } from "react";
 import classes from "./LoginForm.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { useTranslation } from "react-i18next";
-import { Button, ThemeButton } from "shared/ui/Button/Button";
+import { Button, ButtonTheme } from "shared/ui/Button/Button";
 import { Input } from "shared/ui/Input/Input";
 import { useSelector } from "react-redux";
 import { loginActions, loginReducer } from "../../model/slice/loginSlice";
 import { loginByUsername } from "../../model/services/loginByUsername/loginByUsername";
-import { Text, ThemeText } from "shared/ui/Text/Text";
+import { Text, TextTheme } from "shared/ui/Text/Text";
 import { getLoginUsername } from "../../model/selectors/getLoginUsername/getLoginUsername";
 import { getLoginPassword } from "../../model/selectors/getLoginPassword/getLoginPassword";
 import { getLoginIsLoading } from "../../model/selectors/getLoginIsLoading/getLoginIsLoading";
@@ -15,7 +15,7 @@ import { getLoginError } from "../../model/selectors/getLoginError/getLoginError
 import {
   DynamicModuleLoader,
   ReducersList,
-} from "shared/lib/components/DynamicModuleLoader";
+} from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 
 export interface LoginFormProps {
@@ -62,7 +62,8 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         onClickLogin();
       }
     },
-    [onClickLogin]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   return (
@@ -72,7 +73,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         {error && (
           <Text
             text={t("Вы ввели неверный логин или пароль")}
-            theme={ThemeText.ERROR}
+            theme={TextTheme.ERROR}
           />
         )}
         <Input
@@ -94,7 +95,7 @@ const LoginForm = memo(({ className, onSuccess }: LoginFormProps) => {
         ></Input>
         <Button
           className={classes.loginButton}
-          theme={ThemeButton.BACKGROUND}
+          theme={ButtonTheme.BACKGROUND}
           onClick={onClickLogin}
           disabled={isLoading}
         >

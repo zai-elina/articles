@@ -1,6 +1,6 @@
 import React from "react";
 import { Meta, Story } from "@storybook/react";
-import { Text, ThemeText } from "./Text";
+import { Text, TextTheme } from "./Text";
 import { ThemeDecorator } from "shared/config/storybook/ThemeDecorator";
 import { Theme } from "app/providers/ThemeProvider";
 
@@ -26,7 +26,7 @@ export const Error = Template.bind({});
 Error.args = {
   title: "Title",
   text: "text",
-  theme: ThemeText.ERROR,
+  theme: TextTheme.ERROR,
 };
 
 export const OnlyTitle = Template.bind({});

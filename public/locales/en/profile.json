@@ -1,0 +1,19 @@
+{
+  "Профиль": "Profile",
+  "Редактировать": "Edit",
+  "Ваше имя": "Your name",
+  "Ваша фамилия": "Your surname",
+  "Произошла ошибка при загрузке профиля": "An error occurred while enabling the profile",
+  "Попробуйте обновить страницу": "Try refreshing the page",
+  "Отменить": "Cancel",
+  "Сохранить": "Save",
+  "Ваш возраст": "Your age",
+  "Город": "City",
+  "Введите имя пользователя": "Enter username",
+  "Введите ссылку на аватар": "Enter link to avatar",
+  "Имя и фамилия обязательные поля": "First and last name are required fields",
+  "Неккоректный возраст": "Invalid age",
+  "Username обязательное поле": "Username is a required field",
+  "Нет данных": "No data",
+  "Ошибка сервера": "Server error"
+}

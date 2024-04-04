@@ -1,24 +1,28 @@
-import { FC, useState } from "react";
+import {memo, useCallback, useMemo, useState } from "react";
 import classes from "./Sidebar.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Switchers } from "widgets/Switchers";
-import { Button, SizeButton, ThemeButton } from "shared/ui/Button/Button";
-import { AppLink, AppLinkTheme } from "shared/ui/AppLink/AppLink";
-import { useTranslation } from "react-i18next";
-import { RoutePath } from "shared/config/routeConfig/routeConfig";
-import AboutIcon from "shared/assets/icons/about.svg";
-import MainIcon from "shared/assets/icons/main.svg";
+import { SidebarItemsList } from "widgets/Sidebar/model/items";
+import { SidebarItem } from "../SidebarItem/SidebarItem";
+import { CollapsedButton } from "shared/ui/CollapsedButton/CollapsedButton";
 
 interface SidebarProps {
   className?: string;
 }
-export const Sidebar: FC<SidebarProps> = ({ className }) => {
-  const { t } = useTranslation();
+export const Sidebar = memo(({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = useState(false);
 
-  const onToggle = () => {
+  const onToggle = useCallback(() => {
     setCollapsed((prev) => !prev);
-  };
+  }, []);
+
+  const itemList = useMemo(
+    () =>
+      SidebarItemsList.map((item) => (
+        <SidebarItem key={item.path} item={item} collapsed={collapsed} />
+      )),
+    [collapsed]
+  );
 
   return (
     <div
@@ -29,35 +33,12 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         [className]
       )}
     >
-      <div className={classes.items}>
-        <AppLink
-          theme={AppLinkTheme.SECONDARY}
-          to={RoutePath.main}
-          className={classes.item}
-        >
-          <MainIcon className={classes.icon} />
-          <span className={classes.link}> {t("Главная")}</span>
-        </AppLink>
-        <AppLink
-          theme={AppLinkTheme.SECONDARY}
-          to={RoutePath.about}
-          className={classes.item}
-        >
-          <AboutIcon className={classes.icon} />
-          <span className={classes.link}> {t("О сайте")}</span>
-        </AppLink>
-      </div>
-      <Button
-        onClick={onToggle}
-        data-testid="sidebar-toggle"
-        className={classes.collapseBtn}
-        theme={ThemeButton.BACKGROUND_INVERTED}
-        square
-        size={SizeButton.WIDTH_100}
-      >
-        {collapsed ? ">" : "<"}
-      </Button>
+      <div className={classes.items}>{itemList}</div>
+
+      <CollapsedButton collapsed={collapsed} onToggle={onToggle} />
       <Switchers className={classes.switchers_bottom} collapsed={collapsed} />
     </div>
   );
-};
+});
+
+Sidebar.displayName = "Sidebar";

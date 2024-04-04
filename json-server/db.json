@@ -1,39 +1,38 @@
 {
-    "posts": [
-      {
-        "id": "1",
-        "title": "json-server",
-        "userId": 1
-      },
-      {
-        "id": "2",
-        "title": "json-server",
-        "userId": 2
-      }
-    ],
-    "comments": [
-      {
-        "id": "1",
-        "body": "some comment",
-        "postId": 1
-      }
-    ],
-    "users": [
-      {
-        "id": "1",
-        "username": "admin",
-        "password": "123"
-      }
-    ],
-    "profile": {
-      "first": "Элина",
-      "lastname": "Зайнуллина",
-      "age": 22,
-      "currency": "RUB",
-      "country": "Russia",
-      "city": "Kazan",
-      "username": "admin",
-      "avatar": "https://lh3.googleusercontent.com/proxy/1NtbR_xbtWQ59wcF0NQcPvob0OpY6KhY6yX1UzN8zTYyLg3IMUmmfwUalV5luGV-0fY90NX6gXm9mVcDwOKkPpcStma9tib_H0n54u5YFsUUieQBmXvUFBGO"
+  "posts": [
+    {
+      "id": "1",
+      "title": "json-server",
+      "userId": 1
+    },
+    {
+      "id": "2",
+      "title": "json-server",
+      "userId": 2
     }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "123"
+    }
+  ],
+  "profile": {
+    "first": "Элина",
+    "lastname": "Зайнуллина",
+    "age": 22,
+    "currency": "RUB",
+    "country": "Russia",
+    "city": "Kazan",
+    "username": "admin",
+    "avatar": "https://bgstaff.ru/upload/bgstaff/pages/tekhnik.jpg"
   }
-  
+}
