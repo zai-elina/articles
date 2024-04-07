@@ -1,5 +1,4 @@
 import { FC, memo } from "react";
-import classes from "./ArticleDetailsPage.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { useTranslation } from "react-i18next";
 import { ArticleDetails } from "entities/Article";
@@ -15,14 +14,14 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
 
   if (!id) {
     return (
-      <div className={classNames(classes.ArticleDetailsPage, {}, [className])}>
+      <div className={classNames("", {}, [className])}>
         {t("Статья не найдена")}
       </div>
     );
   }
 
   return (
-    <div className={classNames(classes.ArticleDetailsPage, {}, [className])}>
+    <div className={classNames("", {}, [className])}>
       <ArticleDetails id={id} />
     </div>
   );

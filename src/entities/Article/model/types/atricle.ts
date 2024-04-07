@@ -43,6 +43,7 @@ export interface Article {
   id: string;
   title: string;
   subtitle: string;
+  views: number;
   img: string;
   createdAt: string;
   type: ArticleType[];
