@@ -11,14 +11,14 @@
       "userId": 2
     }
   ],
-  "articles":[
+  "articles": [
     {
-      "id":"1",
-      "title":"Typescript Generics",
-      "subtitle":"Всё про Generics",
-      "img":"https://nicholasmordecai.co.uk/wp-content/uploads/2020/10/typescript-generics-types.jpg",
+      "id": "1",
+      "title": "Typescript Generics",
+      "subtitle": "Всё про Generics",
+      "img": "https://nicholasmordecai.co.uk/wp-content/uploads/2020/10/typescript-generics-types.jpg",
       "createdAt": "04.04.2024",
-      "views":777,
+      "views": 777,
       "type": ["IT"],
       "blocks": [
         {
@@ -85,18 +85,21 @@
   "comments": [
     {
       "id": "1",
-      "text": "some comment1",
-      "articleId": 1
+      "text": "some comment",
+      "articleId": "1",
+      "userId": "1"
     },
     {
       "id": "2",
-      "text": "some comment2",
-      "articleId": 1
+      "text": "some comment 2",
+      "articleId": "1",
+      "userId": "1"
     },
     {
       "id": "3",
-      "text": "some comment3",
-      "articleId": 1
+      "text": "some comment 3",
+      "articleId": "1",
+      "userId": "1"
     }
   ],
   "users": [
@@ -104,13 +107,15 @@
       "id": "1",
       "username": "admin",
       "password": "123",
-      "role":"admin"
+      "role": "admin",
+      "avatar": "https://bgstaff.ru/upload/bgstaff/pages/tekhnik.jpg"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role":"user"
+      "role": "user",
+      "avatar": "https://images.orsk.ru/images/stories/2020/12_december/image_11122020154450_16076834901663.jpg"
     }
   ],
   "profile": {

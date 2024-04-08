@@ -4,7 +4,7 @@ import {
   DynamicModuleLoader,
   ReducersList,
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
-import { memo, useCallback, useEffect } from "react";
+import { memo, useCallback } from "react";
 import classes from "./ArticleDetails.module.scss";
 import { fetchArticleById } from "../../model/services/fetchArticleById/fetchArticleById";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
@@ -31,6 +31,7 @@ import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleT
 import { 
   ArticleImageBlockComponent 
 } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
+import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 
 interface ArticleDetailsProps {
   className?: string;
@@ -69,11 +70,9 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     }
   }, []);
 
-  useEffect(() => {
-    if (__PROJECT__ !== "storybook") {
-      dispatch(fetchArticleById(id));
-    }
-  }, [dispatch, id]);
+  useInitialEffect(() => {
+    dispatch(fetchArticleById(id));
+  });
 
   if (isLoading) {
     content = (
