@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect } from "react";
+import { FC, useCallback } from "react";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { fetchProfileData } from "../model/services/fetchProfileData/fetchProfileData";
 import {
@@ -15,10 +15,13 @@ import { getProfileForm } from "../model/selectors/getProfileForm/getProfileForm
 import { getProfileError } from "../model/selectors/getProfileError/getProfileError";
 import { Currency } from "entities/Currency";
 import { Country } from "entities/Country";
-import { getProfileValidateErrors } from "../model/selectors/getProfileValidateErrors/getProfileValidateErrors";
+import { 
+  getProfileValidateErrors 
+} from "../model/selectors/getProfileValidateErrors/getProfileValidateErrors";
 import { TextTheme, Text } from "shared/ui/Text/Text";
 import { ValidateProfileError } from "../model/types/profile";
 import { useTranslation } from "react-i18next";
+import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -43,11 +46,9 @@ export const EditableProfileCard: FC = () => {
     [ValidateProfileError.SERVER_ERROR]: t("Ошибка сервера"),
   };
 
-  useEffect(() => {
-    if (__PROJECT__ !== "storybook") {
-      dispatch(fetchProfileData());
-    }
-  }, [dispatch]);
+  useInitialEffect(() => {
+    dispatch(fetchProfileData());
+  });
 
   const onChangeFirstname = useCallback(
     (value?: string) => {

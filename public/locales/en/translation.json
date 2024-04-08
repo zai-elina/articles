@@ -10,12 +10,13 @@
   "ошибка": "error",
   "Короткий язык": "En",
   "Войти": "Login",
-  "Выйти":"Logout",
+  "Выйти": "Logout",
   "увеличить": "increment",
   "уменьшить": "decrement",
   "Введите логин": "Enter username",
   "Введите пароль": "Enter password",
-  "Вход":"Login",
-  "Вы ввели неверный логин или пароль":"You have entered an incorrect login or password",
-  "Профиль":"Profile"
+  "Вход": "Login",
+  "Вы ввели неверный логин или пароль": "You have entered an incorrect login or password",
+  "Профиль": "Profile",
+  "Нет комментариев": "No comments"
 }
