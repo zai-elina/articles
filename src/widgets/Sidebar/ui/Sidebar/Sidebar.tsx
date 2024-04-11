@@ -1,16 +1,18 @@
-import {memo, useCallback, useMemo, useState } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 import classes from "./Sidebar.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Switchers } from "widgets/Switchers";
-import { SidebarItemsList } from "widgets/Sidebar/model/items";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import { CollapsedButton } from "shared/ui/CollapsedButton/CollapsedButton";
+import { useAppSelector } from "shared/lib/hooks/useAppSelector/useAppSelector";
+import { getSidebarItems } from "../../model/selectors/getSidebarItems/getSidebarItems";
 
 interface SidebarProps {
   className?: string;
 }
 export const Sidebar = memo(({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = useState(false);
+  const sidebarItemsList = useAppSelector(getSidebarItems);
 
   const onToggle = useCallback(() => {
     setCollapsed((prev) => !prev);
@@ -18,10 +20,10 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
 
   const itemList = useMemo(
     () =>
-      SidebarItemsList.map((item) => (
+      sidebarItemsList.map((item) => (
         <SidebarItem key={item.path} item={item} collapsed={collapsed} />
       )),
-    [collapsed]
+    [collapsed, sidebarItemsList]
   );
 
   return (

@@ -15,6 +15,7 @@ const data: Profile = {
   city: "Kazan",
   username: "admin",
   avatar: "https://bgstaff.ru/upload/bgstaff/pages/tekhnik.jpg",
+  id: "1",
 };
 
 describe("updateProfileData.test", () => {

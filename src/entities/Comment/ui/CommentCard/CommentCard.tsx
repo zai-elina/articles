@@ -6,10 +6,12 @@ import { Avatar } from "shared/ui/Avatar/Avatar";
 import { Text } from "shared/ui/Text/Text";
 import DafaultAvatar from "shared/assets/defaultImages/defaultAvatar.jpg";
 import { Skeleton } from "shared/ui/Skeleton/Skeleton";
+import { AppLink } from "shared/ui/AppLink/AppLink";
+import { RoutePath } from "shared/config/routeConfig/routeConfig";
 
 interface CommentCardProps {
   className?: string;
-  comment: Comment;
+  comment?: Comment;
   isLoading?: boolean;
 }
 
@@ -28,15 +30,22 @@ export const CommentCard: FC<CommentCardProps> = (props) => {
     );
   }
 
+  if (!comment) {
+    return null;
+  }
+
   return (
     <div className={classNames(classes.CommentCard, {}, [className])}>
-      <div className={classes.commentAuthor}>
+      <AppLink
+        to={`${RoutePath.profile}${comment.user.id}`}
+        className={classes.commentAuthor}
+      >
         <Avatar
           size={30}
           src={comment.user?.avatar ? comment.user?.avatar : DafaultAvatar}
         />
         <Text title={comment.user.username} />
-      </div>
+      </AppLink>
       <Text className={classes.comment} text={comment.text} />
     </div>
   );

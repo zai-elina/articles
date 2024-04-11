@@ -6,7 +6,8 @@ import {
 import { StateSchema } from "app/providers/StoreProvider";
 import { Comment } from "entities/Comment";
 import { ArticleDetailsCommentsSchema } from "../types/ArticleDetailsCommentsSchema";
-import { fetchCommentsByArticleById } from "../services/fetchCommentsByArticleId/fetchCommentsByArticleId";
+import { fetchCommentsByArticleId 
+} from "../services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 
 const commentsAdapter = createEntityAdapter({
   selectId: (comment: Comment) => comment.id,
@@ -32,18 +33,18 @@ const articleDetailsCommentsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchCommentsByArticleById.pending, (state) => {
+      .addCase(fetchCommentsByArticleId.pending, (state) => {
         state.error = undefined;
         state.isLoading = true;
       })
       .addCase(
-        fetchCommentsByArticleById.fulfilled,
+        fetchCommentsByArticleId.fulfilled,
         (state, action: PayloadAction<Comment[]>) => {
           state.isLoading = false;
           commentsAdapter.setAll(state, action.payload);
         }
       )
-      .addCase(fetchCommentsByArticleById.rejected, (state, action) => {
+      .addCase(fetchCommentsByArticleId.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
