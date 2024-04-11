@@ -19,7 +19,9 @@
       "img": "https://nicholasmordecai.co.uk/wp-content/uploads/2020/10/typescript-generics-types.jpg",
       "createdAt": "04.04.2024",
       "views": 777,
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -96,10 +98,28 @@
       "userId": "1"
     },
     {
-      "id": "3",
-      "text": "some comment 3",
       "articleId": "1",
-      "userId": "1"
+      "userId": "1",
+      "text": "212",
+      "id": "DPlm2vw"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "hey",
+      "id": "lF_RWJe"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "привет",
+      "id": "jDwo6vU"
+    },
+    {
+      "articleId": "1",
+      "userId": "2",
+      "text": "пр",
+      "id": "WW5N6Rv"
     }
   ],
   "users": [
@@ -118,14 +138,28 @@
       "avatar": "https://images.orsk.ru/images/stories/2020/12_december/image_11122020154450_16076834901663.jpg"
     }
   ],
-  "profile": {
-    "first": "Элина",
-    "lastname": "Зайнуллина",
-    "age": 22,
-    "currency": "RUB",
-    "country": "Russia",
-    "city": "Kazan",
-    "username": "admin",
-    "avatar": "https://bgstaff.ru/upload/bgstaff/pages/tekhnik.jpg"
-  }
+  "profile": [
+    {
+      "id": "1",
+      "first": "Элина",
+      "lastname": "Зайнуллина",
+      "age": 23,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Kazan",
+      "username": "admin",
+      "avatar": "https://bgstaff.ru/upload/bgstaff/pages/tekhnik.jpg"
+    },
+    {
+      "id": "2",
+      "first": "Диляра",
+      "lastname": "Ахмадова",
+      "age": 23,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Kazan",
+      "username": "user",
+      "avatar": "https://images.orsk.ru/images/stories/2020/12_december/image_11122020154450_16076834901663.jpg"
+    }
+  ]
 }

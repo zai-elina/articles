@@ -1,0 +1,22 @@
+.AddNewComment {
+  border: 1px solid var(--primary-color);
+  border-radius: var(--border-radius);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.Input {
+  flex-grow: 1;
+}
+
+.Input input {
+  border: none;
+  outline: none;
+}
+
+.Input input:focus {
+  outline: 0;
+  box-shadow: none;
+}
