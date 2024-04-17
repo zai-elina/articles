@@ -1,0 +1,11 @@
+.SQUARE {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  grid-gap: 30px;
+}
+
+.RECTANGLE {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}

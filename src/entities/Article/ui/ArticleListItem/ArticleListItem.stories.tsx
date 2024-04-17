@@ -1,10 +1,15 @@
-import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
-import { fetchArticleById } from "./fetchArticleById";
-import { Article, ArticleBlockType, ArticleType } from "../../types/atricle";
+import React from "react";
+import { Meta, Story } from "@storybook/react";
+import { ArticleListItem } from "./ArticleListItem";
 
-jest.mock("axios");
+import {
+  Article,
+  ArticleBlockType,
+  ArticleType,
+  ArticleView,
+} from "entities/Article/model/types/atricle";
 
-const data: Article = {
+const article: Article = {
   id: "1",
   title: "Typescript Generics",
   subtitle: "Всё про Generics",
@@ -42,23 +47,26 @@ const data: Article = {
   ],
 };
 
-describe("fetchArticleById.test", () => {
-  test("success", async () => {
-    const thunk = new TestAsyncThunk(fetchArticleById);
-    thunk.api.get.mockReturnValue(Promise.resolve({ data: data }));
-    const result = await thunk.callThunk("1");
+export default {
+  title: "entities/Article/ArticleListItem",
+  component: ArticleListItem,
+  argTypes: {
+    background: { control: "color" },
+  },
+} as Meta<typeof ArticleListItem>;
 
-    expect(thunk.api.get).toHaveBeenCalled();
-    expect(result.meta.requestStatus).toBe("fulfilled");
-    expect(result.payload).toEqual(data);
-  });
+type ArticleListItemStory = Story<typeof ArticleListItem>;
 
-  test("error", async () => {
-    const thunk = new TestAsyncThunk(fetchArticleById);
-    thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
-    const result = await thunk.callThunk("1");
+const Template: ArticleListItemStory = (args) => <ArticleListItem {...args} />;
 
-    expect(thunk.api.get).toHaveBeenCalled();
-    expect(result.meta.requestStatus).toBe("rejected");
-  });
-});
+export const Square = Template.bind({});
+Square.args = {
+  view: ArticleView.SQUARE,
+  article: article,
+};
+
+export const Rectangle = Template.bind({});
+Rectangle.args = {
+  view: ArticleView.RECTANGLE,
+  article: article,
+};

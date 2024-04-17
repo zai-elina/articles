@@ -10,6 +10,11 @@ const data: Article = {
   createdAt: "04.04.2024",
   views: 777,
   type: [ArticleType.IT],
+  user: {
+    id: "1",
+    username: "admin",
+    avatar: "https://bgstaff.ru/upload/bgstaff/pages/tekhnik.jpg",
+  },
   blocks: [
     {
       id: "1",

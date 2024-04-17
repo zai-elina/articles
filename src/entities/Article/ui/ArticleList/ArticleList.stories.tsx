@@ -1,10 +1,14 @@
-import { TestAsyncThunk } from "shared/lib/tests/TestAsyncThunk/TestAsyncThunk";
-import { fetchArticleById } from "./fetchArticleById";
-import { Article, ArticleBlockType, ArticleType } from "../../types/atricle";
+import React from "react";
+import { Meta, Story } from "@storybook/react";
+import { ArticleList } from "./ArticleList";
+import {
+  Article,
+  ArticleBlockType,
+  ArticleType,
+  ArticleView,
+} from "entities/Article/model/types/atricle";
 
-jest.mock("axios");
-
-const data: Article = {
+const article: Article = {
   id: "1",
   title: "Typescript Generics",
   subtitle: "Всё про Generics",
@@ -42,23 +46,48 @@ const data: Article = {
   ],
 };
 
-describe("fetchArticleById.test", () => {
-  test("success", async () => {
-    const thunk = new TestAsyncThunk(fetchArticleById);
-    thunk.api.get.mockReturnValue(Promise.resolve({ data: data }));
-    const result = await thunk.callThunk("1");
+export default {
+  title: "entities/Article/ArticleList",
+  component: ArticleList,
+  argTypes: {
+    background: { control: "color" },
+  },
+} as Meta<typeof ArticleList>;
 
-    expect(thunk.api.get).toHaveBeenCalled();
-    expect(result.meta.requestStatus).toBe("fulfilled");
-    expect(result.payload).toEqual(data);
-  });
+type ArticleListStory = Story<typeof ArticleList>;
 
-  test("error", async () => {
-    const thunk = new TestAsyncThunk(fetchArticleById);
-    thunk.api.get.mockReturnValue(Promise.resolve({ status: 403 }));
-    const result = await thunk.callThunk("1");
+const Template: ArticleListStory = (args) => <ArticleList {...args} />;
 
-    expect(thunk.api.get).toHaveBeenCalled();
-    expect(result.meta.requestStatus).toBe("rejected");
-  });
-});
+export const Square = Template.bind({});
+Square.args = {
+  articles: new Array(12).fill(0).map((item, index) => ({
+    ...article,
+    id: String(index),
+  })),
+  isLoading: false,
+  view: ArticleView.SQUARE,
+};
+
+export const Rectangle = Template.bind({});
+Rectangle.args = {
+  articles: new Array(3).fill(0).map((item, index) => ({
+    ...article,
+    id: String(index),
+  })),
+  isLoading: false,
+  view: ArticleView.RECTANGLE,
+};
+
+export const SquareIsLoading = Template.bind({});
+SquareIsLoading.args = {
+  articles: [],
+  isLoading: true,
+  view: ArticleView.SQUARE,
+};
+
+export const RectangleIsLoading = Template.bind({});
+RectangleIsLoading.args = {
+  articles: [],
+  isLoading: true,
+  view: ArticleView.RECTANGLE,
+};
