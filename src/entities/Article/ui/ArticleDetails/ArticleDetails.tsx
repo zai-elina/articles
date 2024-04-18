@@ -10,14 +10,11 @@ import { fetchArticleById } from "../../model/services/fetchArticleById/fetchArt
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { articleDetailsReducer } from "../../model/slice/articleDetailsSlice";
 import { useAppSelector } from "shared/lib/hooks/useAppSelector/useAppSelector";
-import { 
-  getArticleDetailsIsLoading 
+import { getArticleDetailsIsLoading
 } from "../../model/selectors/getArticleDetailsIsLoading/getArticleDetailsIsLoading";
-import { 
-  getArticleDetailsData 
+import { getArticleDetailsData
 } from "../../model/selectors/getArticleDetailsData/getArticleDetailsData";
-import { 
-  getArticleDetailsError 
+import { getArticleDetailsError
 } from "../../model/selectors/getArticleDetailsError/getArticleDetailsError";
 import { Text, TextAlign, TextSize, TextTheme } from "shared/ui/Text/Text";
 import { Skeleton } from "shared/ui/Skeleton/Skeleton";
@@ -28,8 +25,7 @@ import { Icon } from "shared/ui/Icon/Icon";
 import { ArticleBlock, ArticleBlockType } from "../../model/types/atricle";
 import { ArticleCodeBlockComponent } from "../ArticleCodeBlockComponent/ArticleCodeBlockComponent";
 import { ArticleTextBlockComponent } from "../ArticleTextBlockComponent/ArticleTextBlockComponent";
-import { 
-  ArticleImageBlockComponent 
+import { ArticleImageBlockComponent 
 } from "../ArticleImageBlockComponent/ArticleImageBlockComponent";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
 
@@ -55,15 +51,27 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
     switch (block.type) {
     case ArticleBlockType.CODE:
       return (
-        <ArticleCodeBlockComponent key={block.id} className={classes.block} block={block} />
+        <ArticleCodeBlockComponent
+          key={block.id}
+          className={classes.block}
+          block={block}
+        />
       );
     case ArticleBlockType.TEXT:
       return (
-        <ArticleTextBlockComponent key={block.id} className={classes.block} block={block} />
+        <ArticleTextBlockComponent
+          key={block.id}
+          className={classes.block}
+          block={block}
+        />
       );
     case ArticleBlockType.IMAGE:
       return (
-        <ArticleImageBlockComponent key={block.id} className={classes.block} block={block} />
+        <ArticleImageBlockComponent
+          key={block.id}
+          className={classes.block}
+          block={block}
+        />
       );
     default:
       return null;

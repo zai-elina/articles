@@ -11,6 +11,7 @@ import { AddNewCommentSchema } from "features/AddNewComment";
 import { LoginSchema } from "features/AuthByUsername";
 import { ProfileSchema } from "features/EditableProfileCard";
 import { ArticleDetailsCommentsSchema } from "pages/ArticleDetailsPage";
+import { ArticlesPageSchema } from "pages/ArticlesPage";
 
 export interface StateSchema {
   user: UserSchema;
@@ -21,6 +22,7 @@ export interface StateSchema {
   articleDetails?: ArticleDetailsSchema;
   articleDetailsComments?: ArticleDetailsCommentsSchema;
   addNewComment?: AddNewCommentSchema;
+  articlesPage?: ArticlesPageSchema;
 }
 
 declare const $CombinedState: unique symbol;

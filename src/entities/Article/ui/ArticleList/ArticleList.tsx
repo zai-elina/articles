@@ -14,7 +14,7 @@ interface ArticleListProps {
   view?: ArticleView;
 }
 export const ArticleList: FC<ArticleListProps> = (props) => {
-  const { className, articles, isLoading, view = ArticleView.RECTANGLE } = props;
+  const { className, articles, isLoading, view = ArticleView.SQUARE } = props;
 
   const renderArticle = (article: Article) => {
     return <ArticleListItem article={article} view={view} key={article.id} />;
