@@ -43,7 +43,7 @@ export const ArticleListItem: FC<ArticleListItemProps> = (props) => {
   );
 
   if (view === ArticleView.RECTANGLE) {
-    const textBlock = article.blocks.find(
+    const textBlock = article.blocks?.find(
       (block) => block.type === ArticleBlockType.TEXT
     ) as ArticleTextBlock;
 

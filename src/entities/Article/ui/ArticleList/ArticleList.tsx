@@ -3,8 +3,7 @@ import classes from "./ArticleList.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Article, ArticleView } from "../../model/types/atricle";
 import { ArticleListItem } from "../ArticleListItem/ArticleListItem";
-import { 
-  ArticleListItemSkeleton
+import { ArticleListItemSkeleton
 } from "../ArticleListItem/ArticleListItemSkeleton/ArticleListItemSkeleton";
 
 interface ArticleListProps {
@@ -20,23 +19,6 @@ export const ArticleList: FC<ArticleListProps> = (props) => {
     return <ArticleListItem article={article} view={view} key={article.id} />;
   };
 
-  if (isLoading) {
-    return (
-      <div
-        className={classNames(classes.ArticleList, {}, [
-          className,
-          classes[view],
-        ])}
-      >
-        {new Array(view === ArticleView.SQUARE ? 12 : 3)
-          .fill(0)
-          .map((_, index) => (
-            <ArticleListItemSkeleton view={view} key={index} />
-          ))}
-      </div>
-    );
-  }
-
   return (
     <div
       className={classNames(classes.ArticleList, {}, [
@@ -45,6 +27,15 @@ export const ArticleList: FC<ArticleListProps> = (props) => {
       ])}
     >
       {articles.length > 0 ? articles.map(renderArticle) : null}
+      {isLoading && (
+        <>
+          {new Array(view === ArticleView.SQUARE ? 12 : 3)
+            .fill(0)
+            .map((_, index) => (
+              <ArticleListItemSkeleton view={view} key={index} />
+            ))}
+        </>
+      )}
     </div>
   );
 };

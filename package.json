@@ -8,7 +8,7 @@
     "build:dev": "webpack --env mode=development",
     "start": "webpack serve --env port=3001",
     "start:dev:server": "node ./json-server/index.js",
-    "start:dev":  "concurrently \"npm run start\" \"npm run start:dev:server\"",
+    "start:dev": "concurrently \"npm run start\" \"npm run start:dev:server\"",
     "lint:ts": "eslint \"**/*.{ts,tsx}\"",
     "lint:ts:fix": "eslint --fix \"**/*.{ts,tsx}\"",
     "lint:scss": "stylelint \"**/*.scss\" \"**/*.module.scss\"",

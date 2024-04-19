@@ -13,15 +13,18 @@ import {
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
-import { fetchArticleList } from "../../model/services/fetchArticleList";
+import { fetchArticleList } from "../../model/services/fetchArticleList/fetchArticleList";
 import { useAppSelector } from "shared/lib/hooks/useAppSelector/useAppSelector";
 import { getArticlesPageIsLoading
 } from "../../model/selectors/getArticlesPageLoading/getArticlesPageIsLoading";
-import { getArticlesPageError 
+import { getArticlesPageError
 } from "../../model/selectors/getArticlesPageError/getArticlesPageError";
 import { getArticlesPageView } from "../../model/selectors/getArticlesPageView/getArticlesPageView";
 import { TextTheme, Text } from "shared/ui/Text/Text";
 import { ArticleViewSelector } from "features/ArticleViewSelector";
+import { Layout } from "shared/ui/Layout/Layout";
+import { fetchNextArticlesPage
+} from "../../model/services/fetchNextArticlesPage/fetchNextArticlesPage";
 
 interface ArticlesPageProps {
   className?: string;
@@ -46,23 +49,36 @@ const ArticlesPage: FC<ArticlesPageProps> = ({ className }) => {
     [dispatch]
   );
 
+  const onLoadNextPart = useCallback(() => {
+    dispatch(fetchNextArticlesPage());
+  }, [dispatch]);
+
   useInitialEffect(() => {
-    dispatch(fetchArticleList());
     dispatch(articlesPageActions.initState());
+    dispatch(
+      fetchArticleList({
+        page: 1,
+      })
+    );
   });
 
   if (error) {
-    <div>
-      <Text text={t("Статьи не найдена")} theme={TextTheme.ERROR} />
-    </div>;
+    <Layout onScrollEnd={onLoadNextPart}>
+      <ArticleViewSelector view={view} onViewClick={onChangeView} />
+      <div className={classNames("", {}, [className])}>
+        <Text text={t("Статьи не найдены")} theme={TextTheme.ERROR} />
+      </div>
+    </Layout>;
   }
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <ArticleViewSelector view={view} onViewClick={onChangeView} />
-      <div className={classNames("", {}, [className])}>
-        <ArticleList articles={articles} isLoading={isLoading} view={view} />
-      </div>
+      <Layout onScrollEnd={onLoadNextPart}>
+        <ArticleViewSelector view={view} onViewClick={onChangeView} />
+        <div className={classNames("", {}, [className])}>
+          <ArticleList articles={articles} isLoading={isLoading} view={view} />
+        </div>
+      </Layout>
     </DynamicModuleLoader>
   );
 };

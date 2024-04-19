@@ -1,0 +1,7 @@
+.Layout {
+  flex-grow: 1;
+  padding: var(--page-padding);
+  height: calc(100vh - var(--navbar-height));
+  overflow-y: auto;
+  flex-shrink: 100;
+}
