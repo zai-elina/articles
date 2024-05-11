@@ -1,6 +1,7 @@
 import { InputHTMLAttributes, memo, useEffect, useRef } from "react";
 import classes from "./Input.module.scss";
 import { Mods, classNames } from "shared/lib/classNames/classNames";
+import { Icon } from "../Icon/Icon";
 
 interface InputProps
   extends Omit<
@@ -12,6 +13,7 @@ interface InputProps
   onChange?: (value: string) => void;
   autofocus?: boolean;
   readonly?: boolean;
+  Svg?: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -23,6 +25,7 @@ export const Input = memo((props: InputProps) => {
     placeholder,
     autofocus,
     readonly = false,
+    Svg,
     ...otherProps
   } = props;
   const ref = useRef<HTMLInputElement | null>(null);
@@ -53,6 +56,7 @@ export const Input = memo((props: InputProps) => {
         readOnly={readonly}
         {...otherProps}
       ></input>
+      {Svg && <Icon Svg={Svg} className={classes.inputIcon}/>}
     </div>
   );
 });

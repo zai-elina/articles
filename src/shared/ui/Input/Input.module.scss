@@ -1,6 +1,7 @@
 .InputWrapper {
   display: flex;
   gap: 16px;
+  position: relative;
 }
 
 .Input {
@@ -22,6 +23,12 @@
 .readonly {
   opacity: 0.6;
   pointer-events: none;
+}
+
+.inputIcon {
+  position: absolute;
+  right: 8px;
+  top: 10px;
 }
 
 @keyframes rainbow {

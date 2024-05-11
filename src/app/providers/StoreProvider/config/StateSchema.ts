@@ -10,11 +10,13 @@ import { UserSchema } from "entities/User";
 import { AddNewCommentSchema } from "features/AddNewComment";
 import { LoginSchema } from "features/AuthByUsername";
 import { ProfileSchema } from "features/EditableProfileCard";
+import { ScrollSaveSchema } from "features/ScrollSave";
 import { ArticleDetailsCommentsSchema } from "pages/ArticleDetailsPage";
 import { ArticlesPageSchema } from "pages/ArticlesPage";
 
 export interface StateSchema {
   user: UserSchema;
+  scrollSave: ScrollSaveSchema;
 
   // Async reducers
   loginForm?: LoginSchema;

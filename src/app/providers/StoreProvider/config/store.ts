@@ -3,6 +3,7 @@ import { CombinedState, StateSchema, ThunkExtraArg } from "./StateSchema";
 import { userReducer } from "entities/User/model/slice/userSlice";
 import { createReducerManager } from "./reducerManager";
 import { $api } from "shared/api/api";
+import { scrollSaveReducer } from "features/ScrollSave";
 
 // для переиспользования перенесла конфигурацию в функцию
 export function createReduxStore(
@@ -12,6 +13,7 @@ export function createReduxStore(
   const rootReducers: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     user: userReducer,
+    scrollSave: scrollSaveReducer,
   };
 
   const reducerManager = createReducerManager(rootReducers);
