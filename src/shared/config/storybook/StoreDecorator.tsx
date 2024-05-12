@@ -7,7 +7,7 @@ import { profileReducer } from "features/EditableProfileCard";
 import { articleDetailsReducer } from "entities/Article/model/slice/articleDetailsSlice";
 import { addNewCommentReducer } from "features/AddNewComment/model/slice/addNewCommentSlice";
 import { articleDetailsCommentsReducer
-} from "pages/ArticleDetailsPage/ui/model/slices/articleDetailsCommentsSlice";
+} from "pages/ArticleDetailsPage/model/slices/articleDetailsCommentsSlice";
 
 const defaultAsyncReducers: ReducersList = {
   loginForm: loginReducer,

@@ -8,6 +8,7 @@ import { AxiosInstance } from "axios";
 import { ArticleDetailsSchema } from "entities/Article";
 import { UserSchema } from "entities/User";
 import { AddNewCommentSchema } from "features/AddNewComment";
+import { ArticleRecommendationsSchema } from "features/ArticleRecommendationsList";
 import { LoginSchema } from "features/AuthByUsername";
 import { ProfileSchema } from "features/EditableProfileCard";
 import { ScrollSaveSchema } from "features/ScrollSave";
@@ -25,6 +26,7 @@ export interface StateSchema {
   articleDetailsComments?: ArticleDetailsCommentsSchema;
   addNewComment?: AddNewCommentSchema;
   articlesPage?: ArticlesPageSchema;
+  articleRecommendations?: ArticleRecommendationsSchema;
 }
 
 declare const $CombinedState: unique symbol;

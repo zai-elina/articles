@@ -4,7 +4,7 @@ import classes from "./ArticleDetailsPage.module.scss";
 import { useTranslation } from "react-i18next";
 import { ArticleDetails } from "entities/Article";
 import { useNavigate, useParams } from "react-router-dom";
-import { Text } from "shared/ui/Text/Text";
+import { Text, TextSize } from "shared/ui/Text/Text";
 import { CommentList } from "entities/Comment";
 import {
   DynamicModuleLoader,
@@ -14,18 +14,24 @@ import { useAppSelector } from "shared/lib/hooks/useAppSelector/useAppSelector";
 import {
   articleDetailsCommentsReducer,
   getArticleComments,
-} from "../model/slices/articleDetailsCommentsSlice";
-import { getArticleDetailsCommentsIsLoading 
-} from "../model/selectors/getArticleDetailsCommentsIsLoading/getArticleDetailsCommentsIsLoading";
+} from "../../model/slices/articleDetailsCommentsSlice";
+import { getArticleDetailsCommentsIsLoading } from "../../model/selectors/getArticleDetailsCommentsIsLoading/getArticleDetailsCommentsIsLoading";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect/useInitialEffect";
-import { fetchCommentsByArticleId 
-} from "../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
+import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId";
 import { AddNewComment } from "features/AddNewComment";
-import { addCommentForArticle } from "../model/services/addCommentForArticle/addCommentForArticle";
+import { addCommentForArticle } from "../../model/services/addCommentForArticle/addCommentForArticle";
 import { Button } from "shared/ui/Button/Button";
 import { RoutePath } from "shared/config/routeConfig/routeConfig";
 import { Layout } from "shared/ui/Layout/Layout";
+import {
+  ArticleRecommendationsList,
+  articleRecommendationsReducer,
+  fetchArticleRecommendations,
+  getArticleRecommendations,
+  getArticleRecommendationsError,
+  getArticleRecommendationsIsLoading,
+} from "features/ArticleRecommendationsList";
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -33,6 +39,7 @@ interface ArticleDetailsPageProps {
 
 const reducers: ReducersList = {
   articleDetailsComments: articleDetailsCommentsReducer,
+  articleRecommendations: articleRecommendationsReducer,
 };
 
 const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
@@ -42,6 +49,11 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
   const navigate = useNavigate();
   const comments = useAppSelector(getArticleComments.selectAll);
   const isLoading = useAppSelector(getArticleDetailsCommentsIsLoading);
+  const recommendations = useAppSelector(getArticleRecommendations.selectAll);
+  const recommendationsIsLoading = useAppSelector(
+    getArticleRecommendationsIsLoading
+  );
+  const recommendationsError = useAppSelector(getArticleRecommendationsError);
 
   const onSendComment = useCallback(
     (text: string) => {
@@ -56,6 +68,7 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
 
   useInitialEffect(() => {
     dispatch(fetchCommentsByArticleId(id));
+    dispatch(fetchArticleRecommendations());
   });
 
   if (!id) {
@@ -68,10 +81,21 @@ const ArticleDetailsPage: FC<ArticleDetailsPageProps> = ({ className }) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <Layout className={classNames(classes.ArticleDetailsPage, {}, [className])}>
+      <Layout
+        className={classNames(classes.ArticleDetailsPage, {}, [className])}
+      >
         <Button onClick={onBackToList}>{t("Назад к списку")}</Button>
         <ArticleDetails id={id} />
-        <Text title={t("Комментарии")} className={classes.commentsTitle} />
+        <ArticleRecommendationsList
+          articles={recommendations}
+          isLoading={recommendationsIsLoading}
+          error={recommendationsError}
+        />
+        <Text
+          title={t("Комментарии")}
+          className={classes.commentsTitle}
+          size={TextSize.L}
+        />
         <AddNewComment onSendComment={onSendComment} />
         <CommentList isLoading={isLoading} comments={comments} />
       </Layout>

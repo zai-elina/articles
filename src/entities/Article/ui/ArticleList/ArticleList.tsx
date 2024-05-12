@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, HTMLAttributeAnchorTarget } from "react";
 import classes from "./ArticleList.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { Article, ArticleView } from "../../model/types/atricle";
@@ -11,12 +11,26 @@ interface ArticleListProps {
   articles: Article[];
   isLoading?: boolean;
   view?: ArticleView;
+  target?: HTMLAttributeAnchorTarget;
 }
 export const ArticleList: FC<ArticleListProps> = (props) => {
-  const { className, articles, isLoading, view = ArticleView.SQUARE } = props;
+  const {
+    className,
+    articles,
+    isLoading,
+    view = ArticleView.SQUARE,
+    target,
+  } = props;
 
   const renderArticle = (article: Article) => {
-    return <ArticleListItem article={article} view={view} key={article.id} />;
+    return (
+      <ArticleListItem
+        article={article}
+        view={view}
+        key={article.id}
+        target={target}
+      />
+    );
   };
 
   return (
